@@ -5,7 +5,6 @@ use Switch;
 unless (-e $ARGV[-1]) { die "invalid input file"; };
 switch ($ARGV[0])
 {
-	case ""				{ usage(); }
 	case "-a"			{ add(); }
 	case "--add"		{ add(); }
 	case "-r"			{ remove(); }
