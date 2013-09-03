@@ -2,24 +2,12 @@
 use strict;
 use Switch;
 
-unless (-e $ARGV[-1]) { die "invalid input file"; };
-switch ($ARGV[0])
-{
-	case "-a"			{ add(); }
-	case "--add"		{ add(); }
-	case "-r"			{ remove(); }
-	case "--remove"		{ remove(); }
-	case "-m"			{ metadata(); }
-	case "--metadata"	{ metadata(); }
-	case "-c"			{ comment(); }
-	case "--comment"	{ comment(); }
-	else				{ usage(); }
-}
+
 
 sub usage()
 {
 	print "Dear User,\n";
-	print "Usage: mhub -options playlist"
+	print "Usage: mhub -options playlist";
 	print "\n";
 	print "-a / --add filename\n";
 	print "\tadds the file to the playlist\n";
@@ -30,7 +18,6 @@ sub usage()
 	print "-c / --comment songname comment\n";
 	print "\tthis allows you to add comments to songs\n";
 }
-
 sub add()
 {
 do 'add.pl';
@@ -47,3 +34,17 @@ sub comment()
 {
 do 'comment.pl';
 };
+
+unless (-e $ARGV[-1]) { die "invalid input file"; };
+switch ($ARGV[0])
+{
+	case "-a"			{ add(); }
+	case "--add"		{ add(); }
+	case "-r"			{ remove(); }
+	case "--remove"		{ remove(); }
+	case "-m"			{ metadata(); }
+	case "--metadata"	{ metadata(); }
+	case "-c"			{ comment(); }
+	case "--comment"	{ comment(); }
+	else				{ usage(); }
+}
